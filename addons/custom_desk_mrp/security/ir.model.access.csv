@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_desk_order,access_desk_order,model_desk_order,,1,1,1,1
+access_desk_material_line,access_desk_material_line,model_desk_material_line,,1,1,1,1
+

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_form_desk_order" model="ir.ui.view">
+        <field name="name">desk.order.form</field>
+        <field name="model">desk.order</field>
+        <field name="arch" type="xml">
+            <form string="Desk Order">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="customer_id"/>
+                        <field name="desk_product_id"/>
+                        <field name="state"/>
+                    </group>
+                    <notebook>
+                        <page string="Materials">
+                            <field name="material_ids">
+                                <tree editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="quantity"/>
+                                    <field name="unit_price"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Summary">
+                            <field name="total_cost" readonly="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_desk_order" model="ir.actions.act_window">
+        <field name="name">Desk Orders</field>
+        <field name="res_model">desk.order</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_desk_root" name="Custom Desk MRP"/>
+    <menuitem id="menu_desk_order" name="Desk Orders" parent="menu_desk_root" action="action_desk_order"/>
+</odoo>
+

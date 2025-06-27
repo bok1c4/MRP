@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Report Template -->
+    <template id="report_desk_order_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <div class="page">
+                    <h2>Desk Order: <t t-esc="doc.name"/></h2>
+                    <p><strong>Customer:</strong> <t t-esc="doc.customer_id.name"/></p>
+                    <p><strong>Desk Type:</strong> <t t-esc="doc.desk_product_id.name"/></p>
+                    <p><strong>Status:</strong> <t t-esc="doc.state"/></p>
+
+                    <br/>
+                    <h3>Materials Used</h3>
+                    <table class="table table-sm table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Material</th>
+                                <th>Quantity</th>
+                                <th>Unit Price</th>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="doc.material_ids" t-as="line">
+                                <tr>
+                                    <td><t t-esc="line.product_id.name"/></td>
+                                    <td><t t-esc="line.quantity"/></td>
+                                    <td><t t-esc="line.unit_price"/></td>
+                                    <td><t t-esc="line.quantity * line.unit_price"/></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <p><strong>Total Cost:</strong> <t t-esc="doc.total_cost"/> €</p>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <!-- Report Action -->
+    <report
+        id="action_report_desk_order"
+        string="Desk Order Report"
+        model="desk.order"
+        report_type="qweb-pdf"
+        name="custom_desk_mrp.report_desk_order_document"
+        file="custom_desk_mrp.report_desk_order_document"
+        print_report_name="'Desk Order - %s' % (object.name)"
+    />
+
+</odoo>
+

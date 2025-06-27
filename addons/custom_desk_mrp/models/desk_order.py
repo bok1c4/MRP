@@ -48,5 +48,4 @@ class DeskOrder(models.Model):
             )
             if sale_order:
                 for line in sale_order.order_line:
-                    logging()._logger.info(f"Product: {line.product_id.name}, Qty: {
-                        line.product_uom_qty}")
+                    logging()._logger.info(line.product_id.name)
