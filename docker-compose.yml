@@ -1,0 +1,40 @@
+version: "3.1"
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=odoo
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    command:
+      [
+        "postgres",
+        "-c",
+        "listen_addresses=*",
+        "-c",
+        "hba_file=/etc/postgresql/pg_hba.conf",
+      ]
+    ports:
+      - "5543:5432"
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data
+      - ./pg_hba.conf:/etc/postgresql/pg_hba.conf
+    restart: unless-stopped
+
+  odoo:
+    image: odoo:17
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+    environment:
+      - HOST=db
+      - USER=odoo
+    volumes:
+      - ./config/odoo.conf:/etc/odoo/odoo.conf:ro
+      - ./addons:/mnt/addons
+      - ./odoo-custom/odoo/addons:/mnt/odoo-custom/odoo/addons
+
+volumes:
+  odoo-db-data:
