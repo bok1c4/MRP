@@ -27,7 +27,6 @@ class SaleOrder(models.Model):
 
                 if line.product_id.type == 'product' and tmpl.desk_custom:
                     try:
-                        # ❗ FIX: "order.line.product_id" is incorrect — should be "line.product_id"
                         name = self.env['ir.sequence'].next_by_code(
                             'desk.order') or f"{order.name} - {line.product_id.display_name}"
 
