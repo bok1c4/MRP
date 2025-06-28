@@ -35,6 +35,8 @@ services:
       - ./config/odoo.conf:/etc/odoo/odoo.conf:ro
       - ./addons:/mnt/addons
       - ./odoo-custom/odoo/addons:/mnt/odoo-custom/odoo/addons
+    command: >
+      odoo --dev=all --config=/etc/odoo/odoo.conf
 
 volumes:
   odoo-db-data:

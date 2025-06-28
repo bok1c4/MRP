@@ -54,8 +54,10 @@ Purchase raw materials if needed
 # What happens after the transaction
 
 1. Customer has placed the order
+
    - We have to build that order with our desk.order model
    - Load the modules:
+
      - Inventory
      - Sale:
        - CRM
@@ -64,13 +66,30 @@ Purchase raw materials if needed
      - Invoicing (Invoicing & Payments module)
      - Expenses (Do I need this?)
 
-- **`Done: Finding where should I,
-get the info about the order`**
+# Convert Web Quotation -> Sales Order
 
-- **`Current: Finding where should I,
-expose the route and call it trough postman`**
+- Automatically confirms the quotation + (allow button if something fails)
+- Create Manufacturing Order
+- Deduct Inventory
+- Generate PDF Reports
+- Create Dashboard / SQL View
+- Expose API Endpoint JSON view for desk orders by customers
 
-        - Objective - get the order values
+## Default Behaviour
+
+User purchases the product, the quotation is created after the payment.
+`We can automate everything or trough buttons create the mrp module`
+When user previews all of the quotations,
+confirmation can be sent to create sales.order.
+
+So my module should be up and running after, the sales.order creation.
+Do I need to setup the webhook that will listen for the changes on the server.
+So it can trigger the module, or what should I do to create such a functionality?
+
+I think, I should not change the default behaviour of the lib,
+but rather build on top of it?
+
+So what is the next step of the custom_desk_mrp module?
 
 ## 🔄 What You Actually Need to Build
 
