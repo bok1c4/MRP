@@ -14,7 +14,7 @@
         'security/ir.model.access.csv',
         'views/desk_order_views.xml',
         'report/desk_order_report.xml',
-        # 'data/demo_data.xml',  # Ako dodaješ demo podatke
+        # 'data/demo_data.xml',  # if adding demo data
     ],
     'demo': [],
     'installable': True,
