@@ -8,7 +8,7 @@
                 <div class="page">
                     <h2>Desk Order: <t t-esc="doc.name"/></h2>
                     <p><strong>Customer:</strong> <t t-esc="doc.customer_id.name"/></p>
-                    <p><strong>Desk Type:</strong> <t t-esc="doc.desk_product_id.name"/></p>
+                    <p><strong>Desk Type:</strong> <t t-esc="doc.product_id.name"/></p>
                     <p><strong>Status:</strong> <t t-esc="doc.state"/></p>
 
                     <br/>

@@ -12,9 +12,10 @@
     ],
     'data': [
         'security/ir.model.access.csv',
-        'views/desk_order_views.xml',
         'report/desk_order_report.xml',
-        # 'data/demo_data.xml',  # if adding demo data
+        'views/desk_order_views.xml',
+        'views/product_template_inherit.xml',
+        'data/ir_sequence.xml',
     ],
     'demo': [],
     'installable': True,
